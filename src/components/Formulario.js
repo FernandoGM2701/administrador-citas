@@ -13,10 +13,42 @@ const Formulario = () => {
         sintomas: "",
     });
 
+    const [error, actualizarError] = useState(false);
+
 
     //Función que se ejecuta cada vez que el usuario escribe en un input
-    const actualizarState = () => {
-        console.log("Escribiendo...");
+    const actualizarState = (e) => {
+        //console.log(e.target.name);
+        //console.log(e.target.value);
+        actualizarCita({
+            ...cita,
+            [e.target.name] : e.target.value
+        })
+    }
+
+
+    //Extraer valores
+
+    const {mascota, dueño, fecha, hora, sintomas} = cita;
+
+    // Cuando el usuario presiona agregar cita
+
+    const submitCita = (e) => {
+        e.preventDefault();
+
+        console.log(mascota);
+
+        //Validar
+        if(mascota.trim() === "" || dueño.trim() === "" || fecha.trim() === "" || hora.trim() === ""
+        || sintomas.trim() === ""){
+            console.log("No ingresó nada en mascota");
+            return; 
+        }
+        //Asignar un ID
+
+        //Crear la cita
+
+        //Reiniciar el form
     }
 
     return(
@@ -24,7 +56,9 @@ const Formulario = () => {
 
             <h1> Agregar Cita </h1>
 
-            <form>
+            <form
+                onSubmit = {submitCita}
+            >
                 <label> Nombre Mascota </label>
                 <input
                     type = "text"
@@ -32,6 +66,7 @@ const Formulario = () => {
                     className = "u-full-width"
                     placeholder = "Ingrese el nombre mascota"
                     onChange = {actualizarState}
+                    value = {mascota}
                 />
 
                 <label> Nombre Dueño </label>
@@ -40,6 +75,8 @@ const Formulario = () => {
                     name = "dueño"    
                     className = "u-full-width"
                     placeholder = "Ingrese el nombre del dueño"
+                    onChange = {actualizarState}
+                    value = {dueño}
                 />
 
                 <label> Fecha </label>
@@ -47,6 +84,8 @@ const Formulario = () => {
                     type = "date"
                     name = "fecha"    
                     className = "u-full-width"
+                    onChange = {actualizarState}
+                    value = {fecha}
                 />
 
                 <label> Hora </label>
@@ -54,17 +93,22 @@ const Formulario = () => {
                     type = "time"
                     name = "hora"    
                     className = "u-full-width"
+                    onChange = {actualizarState}
+                    value = {hora}
                 />
 
                 <label> Síntomas </label>
                 <textarea
                     name = "sintomas"    
                     className = "u-full-width"
+                    onChange = {actualizarState}
+                    value = {sintomas}
                 ></textarea>
 
                 <button
                     type= "submit"
                     className = "u-full-width button-primary"
+                    onChange = {actualizarState}
                 > Agregar Cita</button>
             </form>
 
