@@ -1,4 +1,6 @@
 import React, {Fragment, useState} from "react";
+import uuid from "uuid/dist/v4"; 
+
 
 
 const Formulario = () => {
@@ -36,15 +38,19 @@ const Formulario = () => {
     const submitCita = (e) => {
         e.preventDefault();
 
-        console.log(mascota);
-
         //Validar
         if(mascota.trim() === "" || dueño.trim() === "" || fecha.trim() === "" || hora.trim() === ""
         || sintomas.trim() === ""){
-            console.log("No ingresó nada en mascota");
+            actualizarError(true);
             return; 
         }
+
+        //Eliminar el mensaje previo
+        actualizarError(false);
+
         //Asignar un ID
+        cita.id = uuid();
+        console.log(cita);
 
         //Crear la cita
 
@@ -55,6 +61,8 @@ const Formulario = () => {
         <Fragment>
 
             <h1> Agregar Cita </h1>
+
+            {error ? <p className="alerta-error">Todos los campos son obligatorios</p> :null}
 
             <form
                 onSubmit = {submitCita}
