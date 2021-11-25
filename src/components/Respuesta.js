@@ -1,9 +1,15 @@
 import React from "react";
 
-const Respuesta = () => {
+const Respuesta = ({cita}) => {
 
     return (
-            <h1>Respuesta</h1>
+           <div className="cita">
+               <p>Mascota: <span> {cita.mascota} </span></p>
+               <p>Dueño: <span> {cita.dueño} </span></p>
+               <p>Fecha: <span> {cita.fecha} </span></p>
+               <p>Hora: <span> {cita.hora} </span></p>
+               <p>Síntomas: <span> {cita.sintomas} </span></p>
+           </div>
     );
 }
 

@@ -31,7 +31,13 @@ function App() {
                 />
               </div>
               <div className = "one-half column">
-                <Respuesta/>
+                <h2>Administra tus citas</h2>
+                {citas.map(cita => (
+                  <Respuesta 
+                    key  =  {cita.id}
+                    cita =  {cita}
+                  />
+                ))}
               </div>
           </div>
       </div>
