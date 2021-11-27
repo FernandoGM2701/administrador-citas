@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
-import Formulario from "./components/Formulario"
-import Respuesta from "./components/Respuesta"
+import Formulario from "./components/Formulario";
+import Respuesta from "./components/Respuesta";
 
 function App() {
 
@@ -33,7 +33,7 @@ function App() {
   }
 
   // Función que elimina una cita por su id
-  const eliminarCita = (id) =>{
+  const eliminarCita = (id) => {
       const nuevasCitas = citas.filter(cita => cita.id !== id);
       guardarCitas(nuevasCitas);
   }

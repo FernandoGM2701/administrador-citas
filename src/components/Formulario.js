@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from "react";
-import uuid from "uuid/dist/v4"; 
+import { v4 as uuidv4 } from 'uuid';
 import PropTypes from "prop-types";
 
 const Formulario = ({crearCita}) => {
@@ -47,7 +47,8 @@ const Formulario = ({crearCita}) => {
         actualizarError(false);
 
         //Asignar un ID
-        cita.id = uuid();
+        cita.id = uuidv4();
+        console.log(cita.id);
         
         //Crear la cita
         crearCita(cita);
@@ -58,7 +59,7 @@ const Formulario = ({crearCita}) => {
             dueño: "",
             fecha: "",
             hora: "",
-            sintomas: "",
+            sintomas: ""
         })
     }
 
